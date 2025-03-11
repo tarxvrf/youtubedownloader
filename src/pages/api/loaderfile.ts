@@ -1,9 +1,9 @@
 import { NextApiRequest } from "next";
 import { NextApiResponse } from "next";
 import ytdl from '@distube/ytdl-core';
-
+import { Middleware } from "./middleware";
 export default async function handler(req:NextApiRequest,res:NextApiResponse){
-
+   Middleware(req,res)
     if (req.method === 'POST') {
         const { url } = req.body;
         
