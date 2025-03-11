@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import {useState } from "react";
 import { FaYoutube } from "react-icons/fa";
 
 
 
 interface VideoInfo {
   title: string;
-  formats: { [key: string]: any }[]; // or more specific type for formats
+  formats: { [key: string]: string | null  | undefined }[]; // or more specific type for formats
 }
 export default function YouTube() {
   const [url, setUrl] = useState('');
   const [btnstatus,setstatus]=useState(false)
   const [videoInfo, setVideoInfo] = useState<VideoInfo | null>(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<null | string>();
  
 
   const handleDownload = async () => {
@@ -35,12 +35,9 @@ export default function YouTube() {
         setstatus(true)
       }
      
-      
-      
-      
       setError(null);
     } catch (error) {
-      setError('Please Input YouTube Url Video' as any);
+      setError(error as string + "");
       setVideoInfo(null);
     }
 
@@ -72,8 +69,8 @@ export default function YouTube() {
           <p>Quality: {format.quality}</p>          
           <a  
             className="btn btn-info mt-7"
-            onClick={(e)=>{setVideoInfo(null);setstatus(false);setUrl('')}}            
-            href={format.url}
+            onClick={()=>{setVideoInfo(null);setstatus(false);setUrl('')}}            
+            href={format.url as string}
             target="_blank"
             download={format.filename}>  
             Download          
