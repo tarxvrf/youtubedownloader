@@ -14,7 +14,7 @@ export default function YouTube() {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch("/api/loaderfile", {
+      const response = await fetch("https://tulus-youtube.vercel.app/api/loaderfile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
