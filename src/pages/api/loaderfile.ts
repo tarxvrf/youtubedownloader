@@ -25,7 +25,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
           });
         } catch (error) {
           console.error(error);
-          res.status(500).json({ error: 'Failed to fetch video info' });
+          res.status(500).json({ error: 'Uppss Failed to fetch video info' });
         }
       } else {
         res.status(405).json({ error: 'Method not allowed' });
